@@ -1,0 +1,44 @@
+<div
+  *ngIf="!time"
+  style="
+    width: 100vw;
+    height: 100vh;
+    background-color: #fcfcfd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <img src="assets/Images/Home/load (1).png" alt="" style="width: 700px;"/>
+</div>
+<div *ngIf="time">
+<body>
+  <div class="left">
+    <div class="container">
+      <div class="heading mb-4">
+        <p>C<span>OO</span>RD</p>
+      </div>
+      <div class="cont">
+        <h3>Confirm your email address</h3>
+      </div>
+      <div class="conts mb-4">
+        <p>Please check your email for a One Time password(OTP)</p>
+      </div>
+      <form action="" (ngSubmit)="formSubmit()">
+        <div class="inp">
+            <input type="number" [(ngModel)]="enteredOTP" name="otp" min="0" max="999999" (ngModelChange)="verify()">
+        </div>
+        <div class="forgot">
+            <p (click)="resend()">Resend OTP</p>
+        </div>
+        <div class="">
+            <button class="btnn">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="right">
+    <img src="assets/Images/signup/Conformation Page.png" alt="" />
+  </div>
+</body>
+</div>

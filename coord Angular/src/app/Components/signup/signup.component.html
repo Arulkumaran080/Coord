@@ -1,0 +1,70 @@
+<div
+  *ngIf="!time"
+  style="
+    width: 100vw;
+    height: 100vh;
+    background-color: #fcfcfd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <img src="assets/Images/Home/load (1).png" alt="" style="width: 700px;"/>
+</div>
+<div *ngIf="time">
+<body>
+  <div class="left">
+    <div class="container">
+      <div class="quotes">
+        <p>C<span>OO</span>RD</p>
+      </div>
+      <div class="quote">
+        <p>Organize for better.</p>
+      </div>
+      <div class="btns">
+        <div class="google bttn">
+          <i class="fab fa-google fa-1x"></i>
+          <a href="" class="login_btn"> Sign up with Google </a>
+        </div>
+        <div class="apple bttn">
+          <i class="fab fa-apple"></i>
+          <a href="" class="login_btn"> Sign up with Apple </a>
+        </div>
+      </div>
+      <div class="or">
+        <div class="dash"></div>
+        <p>Or</p>
+        <div class="dash"></div>
+      </div>
+      <div class="form">
+        <form action="" (ngSubmit)="mail()">
+          <div class="mail form_ele">
+            <input type="email" [(ngModel)]="signup.email" name="email" placeholder="Enter your email" />
+          </div>
+          <div class="password form_ele">
+            <input [type]="pass" [(ngModel)]="signup.password" name="password" placeholder="Create password" />
+            <i (click)="show()" [class]="eye"></i>
+          </div>
+          <div class="button form_ele">
+            <button>Create account</button>
+          </div>
+          <div class="terms">
+            <p>
+              By clicking “Continue” above, you acknowledge that you have read
+              and agreed to Coord’s <span>Terms & Conditions</span> and
+              <span>Privacy Policy</span>
+            </p>
+          </div>
+        </form>
+        <div class="signin">
+          <p>Already Signed up? <a routerLink="/signin"> Sign in</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <img src="assets/Images/design.png" alt="">
+    <p>Organize better!</p>
+  </div>
+</body>
+</div>

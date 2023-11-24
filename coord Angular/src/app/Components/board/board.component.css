@@ -1,0 +1,336 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  display: flex;
+  /* margin-left: 220px;
+    height: 100vh;
+    background-color: #fcfcfd; */
+}
+/* .....................nav.................... */
+
+.nav {
+  background-color: #3c4856;
+  width: 220px;
+  /* width: 20%; */
+  overflow: hidden;
+  position: fixed;
+}
+.head-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 0px 10px;
+  position: fixed;
+  width: 220px;
+  height: 100vh;
+  left: 0px;
+  top: 0px;
+  background: #3c4856;
+}
+.headings {
+  padding-top: 13.5px;
+}
+.headings p {
+  width: 104px;
+  height: 31px;
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 130%;
+  letter-spacing: 0.1em;
+  color: #d0d6dc;
+}
+.headings p span {
+  color: #1d90d7;
+}
+.home-head i {
+  font-size: 20px;
+}
+.icon {
+  width: 20px;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  padding: 8px 16px;
+  gap: 10px;
+  width: 100%;
+  height: 43px;
+  font-family: "Plus Jakarta Sans";
+  border-radius: 4px;
+  color: #f9fafa;
+  cursor: pointer;
+}
+.import-btn {
+  height: 40px;
+  width: 180px;
+  overflow: hidden;
+  background-color: #1d90d7;
+  border-radius: 4px;
+  color: #f9fafa;
+  display: flex;
+  justify-content: center;
+  padding: 8px 16px;
+  gap: 8px;
+}
+.import-btn img {
+  height: 30px;
+  width: 30px;
+}
+.import {
+  margin-top: 37.5px;
+}
+.import h2 {
+  font-family: Plus Jakarta Sans;
+  font-size: 15px;
+}
+.pack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 32px;
+  width: 100%;
+  /* background-color: #fff; */
+}
+.pack p {
+  padding-left: 5px;
+}
+.pack i {
+  font-size: larger;
+}
+.hov:hover {
+  background-color: #515a76;
+  border-radius: 0;
+  /* border-left: 4px solid #c4e0dc; */
+}
+
+.active {
+  background-color: #515a76;
+  border-radius: 0;
+  width: 100%;
+  border-left: 4px solid #c4e0dc;
+}
+.account {
+  height: 40px;
+  width: 40px;
+  background-color: #f1f2f3;
+  border-radius: 50px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+}
+.boxs {
+  display: flex;
+  justify-content: start;
+  padding: 16px;
+  align-items: end;
+  width: 100%;
+  height: 100%;
+  /* background-color: #e20d0d; */
+}
+.account img {
+  width: 100%;
+  border-radius: 50px;
+}
+.account p {
+  width: 68px;
+  height: 27px;
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 190%;
+  color: #d0d6dc;
+}
+
+/* ................new..................... */
+.line {
+  width: 80%;
+  height: 1px;
+  background-color: #717c88;
+}
+/* ....................home.................... */
+.home {
+  width: 100%;
+  margin-left: 220px;
+}
+.nav-line-1 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 24px 0px 24px;
+  /* background-color: #d021ad; */
+}
+/* ..................nav-line-2............. */
+.nav-line-2 {
+  display: flex;
+  justify-content: end;
+  gap: 16px;
+  padding: 6px 24px;
+  /* background-color: #14ac2d; */
+}
+.svg-icon {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+input[type="radio"] {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.options {
+  list-style: none;
+  padding: 0;
+}
+.options-name {
+  color: var(--ui-greys-neutral-1, #3c4856);
+  font-family: Plus Jakarta Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 18.2px */
+}
+/* ..................End of nav-line-2............. */
+.home-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* padding: 16px; */
+  /* box-shadow: 0px 10px 40px #aeb1b5; */
+  background-color: #fcfcfd;
+  border-bottom: 2px solid #dfdfdf;
+  margin-bottom: 10px;
+}
+.refresh {
+  display: flex;
+}
+.refresh button {
+  height: 36px;
+  width: 36px;
+  background-color: #1d90d7;
+  color: white;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+nav .heading p {
+  width: 40px;
+  height: 34px;
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 170%;
+  color: #3c4856;
+}
+
+.search {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: center;
+  padding: 6px 16px;
+  gap: 8px;
+  width: 360px;
+  height: 36px;
+  background: #f1f2f3;
+  border: 2px solid #ecedef;
+  border-radius: 16px;
+}
+
+.search input {
+  width: 100%;
+  background-color: #f1f2f3;
+  outline: none;
+  border: none;
+}
+
+.img {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 120px;
+    margin-bottom: 40px; */
+}
+.button {
+  display: flex;
+  justify-content: center;
+}
+.button button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 8px;
+  width: 109px;
+  height: 40px;
+  background: #1d90d7;
+  border-radius: 4px;
+  color: #f9fafa;
+}
+
+/* ..................contant...................... */
+.contant {
+  width: 100%;
+  height: 100vh;
+}
+.empty-contant {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.empty-contant img {
+  margin-bottom: 40px;
+}
+.empty-contant p {
+  color: var(--ui-greys-neutral-1, #3c4856);
+  text-align: center;
+  font-family: Plus Jakarta Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 180%; /* 28.8px */
+  margin-bottom: 8px;
+}
+
+.empty-contant span {
+  color: var(--ui-greys-neutral-4, #a5b0bd);
+  text-align: center;
+  font-family: Plus Jakarta Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 190%; /* 26.6px */
+}
+
+.empty-contant button {
+  margin-top: 52px;
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  background: var(--ui-primary-colour-primary, #1d90d7);
+}
+
+.empty-contant button span {
+  color: var(--ui-greys-neutral-6, #f9fafa);
+  font-family: Plus Jakarta Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 18.2px */
+}

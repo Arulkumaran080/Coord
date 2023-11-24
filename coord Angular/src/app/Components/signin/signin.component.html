@@ -1,0 +1,87 @@
+<div
+  *ngIf="!time"
+  style="
+    width: 100vw;
+    height: 100vh;
+    background-color: #fcfcfd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <img src="assets/Images/Home/load (1).png" alt="" style="width: 700px;"/>
+</div>
+<div *ngIf="time">
+  <body>
+    <div class="left">
+      <div class="container">
+        <div class="quotes">
+          <p>C<span>OO</span>RD</p>
+        </div>
+        <div class="quote">
+          <p>Organize for better.</p>
+        </div>
+        <div class="btns">
+          <div class="google bttn">
+            <i class="fab fa-google fa-1x"></i>
+            <a href="" class="login_btn"> Sign up with Google </a>
+          </div>
+          <div class="apple bttn">
+            <i class="fab fa-apple"></i>
+            <a href="" class="login_btn"> Sign up with Apple </a>
+          </div>
+        </div>
+        <div class="or">
+          <div class="dash"></div>
+          <p>Or</p>
+          <div class="dash"></div>
+        </div>
+        <div class="form">
+          <form (ngSubmit)="login()">
+            <div class="inputs">
+              <div class="mail form_ele">
+                <input
+                  type="email"
+                  class="form-control"
+                  [(ngModel)]="loginData.email"
+                  name="email"
+                  placeholder="Enter your email"
+                />
+              </div>
+              <div class="password form_ele">
+                <input
+                  [type]="pass"
+                  class="form-control"
+                  [(ngModel)]="loginData.password"
+                  name="email"
+                  placeholder="Enter password"
+                />
+                <i (click)="show()" [class]="eye"></i>
+              </div>
+            </div>
+            <div class="forgot">
+              <p routerLink="/passwordReset">Forget Password ?</p>
+            </div>
+            <div class="form_btns">
+              <div class="button form_ele">
+                <button>Continue</button>
+              </div>
+            </div>
+          </form>
+          <div class="wrong">
+            <p *ngIf="wrong">
+              Sorry, your email or password was incorrect. Please double-check
+              your credentials.
+            </p>
+          </div>
+          <div class="signin">
+            <p>Don’t have an account? <a routerLink="/signup">Sign up</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <img src="assets/Images/signup/design.png" alt="" />
+    </div>
+  </body>
+</div>

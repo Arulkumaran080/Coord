@@ -1,0 +1,23 @@
+.body {
+  background-color: #fff;
+  padding: 20px;
+}
+.header{
+    margin-bottom: 20px;
+}
+h2 {
+  color: var(--ui-greys-neutral-1, #3c4856);
+  font-family: Plus Jakarta Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 130%;
+  margin: 0;
+}
+button{
+    font-size: 14px;
+}
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+}

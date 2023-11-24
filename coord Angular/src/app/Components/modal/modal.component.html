@@ -1,0 +1,112 @@
+<div class="body">
+  <div class="header">
+    <div class="head">
+      <h2>Import URL</h2>
+    </div>
+    <div class="cross">
+      <a (click)="discard()">
+        <img src="assets/Images/Icons/xIcon.png" alt="" srcset="" />
+      </a>
+    </div>
+  </div>
+  <div class="form">
+    <form action="">
+      <div class="left">
+        <div class="url">
+          <label>URL</label>
+          <div class="input-boxs">
+            <input
+              type="text"
+              name="url"
+              [(ngModel)]="item.urls"
+              placeholder="Paste URL"
+            />
+          </div>
+        </div>
+        <div class="url">
+          <label>Image URL</label>
+          <div class="input-boxs">
+            <input
+              type="text"
+              name="img"
+              [(ngModel)]="item.img"
+              placeholder="Paste URL for Thumbnail"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="top">
+          <div class="title">
+            <label>Title</label>
+            <div class="input-box">
+              <input
+                type="text"
+                placeholder="Name"
+                name="title"
+                [(ngModel)]="item.title"
+              />
+            </div>
+          </div>
+          <div class="des">
+            <label>Description</label>
+            <div class="input-box">
+              <input
+                type="text"
+                placeholder="Enter small Description about this file"
+                name="description"
+                [(ngModel)]="item.description"
+              />
+            </div>
+          </div>
+          <div class="tag">
+            <label>Tags</label>
+            <div class="tags">
+              <div
+                *ngFor="let taglist of item.tags; let i = index"
+                class="tag-container"
+              >
+                <div class="tag-name">{{ taglist }}</div>
+                <img
+                  src="assets/Images/Icons/xIcon.png"
+                  alt=""
+                  (click)="delete(i)"
+                />
+              </div>
+            </div>
+            <div class="input-box">
+              <input
+                type="text"
+                name="tag"
+                id="tag"
+                [(ngModel)]="tag"
+                (keyup)="addTag($event)"
+                placeholder="Add some tags"
+                (ngModelChange)="search($event)"
+                [matAutocomplete]="auto"
+                spellcheck="false"
+              />
+              <mat-autocomplete
+              #auto="matAutocomplete"
+              class="custom-dropdown-menu-options"
+            >
+              <mat-option
+                *ngFor="let option of searchOptions"
+                value="{{ option }}"
+              >
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="bottom">
+      <!-- <div class="btn"> -->
+      <button class="btn sa" (click)="save()">Save</button>
+      <button class="btn discard" (click)="discard()">Discard</button>
+      <!-- </div> -->
+    </div>
+  </div>
+</div>
