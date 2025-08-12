@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +31,11 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BoardComponent } from './Components/board/board.component';
 import { BoardModelComponent } from './Components/board-model/board-model.component';
 import { AddBoardModelComponent } from './Components/add-board-model/add-board-model.component';
+import { HomePageComponent } from './new-component/home-page/home-page.component';
+import { NavBarComponent } from './new-component/nav-bar/nav-bar.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers, metaReducers } from './new-component/store/reducers';
 
 @NgModule({
   declarations: [
@@ -51,6 +56,8 @@ import { AddBoardModelComponent } from './Components/add-board-model/add-board-m
     BoardComponent,
     BoardModelComponent,
     AddBoardModelComponent,
+    HomePageComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +74,10 @@ import { AddBoardModelComponent } from './Components/add-board-model/add-board-m
     MatIconModule,
     SlickCarouselModule,
     MatAutocompleteModule,
+    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument(),
+    StoreDevtoolsModule.instrument(),
   ],
   providers: [],
   bootstrap: [AppComponent],

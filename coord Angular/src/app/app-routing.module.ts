@@ -13,6 +13,7 @@ import { TagsComponent } from './Components/tags/tags.component';
 import { BoardComponent } from './Components/board/board.component';
 import { BoardModelComponent } from './Components/board-model/board-model.component';
 import { AddBoardModelComponent } from './Components/add-board-model/add-board-model.component';
+import { HomePageComponent } from './new-component/home-page/home-page.component';
 
 const routes: Routes = [
   { path: '', component: SigninComponent },
@@ -29,6 +30,8 @@ const routes: Routes = [
   { path: 'board', component: BoardComponent },
   { path: 'board-modal', component: BoardModelComponent },
   { path: 'AddBoardModelComponent', component: AddBoardModelComponent },
+
+  { path: 'home-page', component: HomePageComponent },
 ];
 
 @NgModule({
