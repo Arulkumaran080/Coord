@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { passValueService } from 'src/app/Services/passValue.service';
 import { Item } from 'src/app/Models/Item';
 import { LoginService } from 'src/app/Services/login.service';
-import { CurrentUser } from 'src/app/Models/CurrentUser';
+import { CurrentUsers } from 'src/app/Models/CurrentUser';
 import { ItemService } from 'src/app/Services/item.service';
 import { EditModalComponent } from '../edit-modal/edit-modal.component';
 import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
@@ -25,11 +25,11 @@ export class HomeComponent {
     private value: passValueService,
     private loginService: LoginService,
     private itemService: ItemService
-  ) {}
+  ) { }
 
   list: number = 0;
   item: Item[] = [];
-  user!: CurrentUser;
+  user!: CurrentUsers;
   star: string = 'fa-regular fa-star';
   starBoolen: boolean = false;
   tagList: string[] = [];
@@ -72,14 +72,14 @@ export class HomeComponent {
   openDialog() {
     this.dialogRef.open(ModalComponent);
   }
-  openDialogBoard(id:number) {
+  openDialogBoard(id: number) {
     this.dialogRef.open(AddBoardModelComponent);
-    this.value.itemId=id;
+    this.value.itemId = id;
   }
 
   likeStar(id: number, b: boolean, item1: Item) {
     item1.star = !b;
-    this.itemService.updateItem(id, item1).subscribe((res) => {});
+    this.itemService.updateItem(id, item1).subscribe((res) => { });
     // this.ngOnInit();
   }
 
@@ -106,7 +106,7 @@ export class HomeComponent {
     } else {
       i.pin = 'pin';
     }
-    this.itemService.updateItem(i.itemId, i).subscribe((res) => {});
+    this.itemService.updateItem(i.itemId, i).subscribe((res) => { });
   }
 
   arrangeInAlphabet() {
@@ -158,34 +158,7 @@ export class HomeComponent {
     this.modifiedDate = false;
   }
 
-  UpdationDate() {
-    const updationDate = this.item.slice().sort((a, b) => {
-      const dateA = new Date(a.updationTime);
-      const dateB = new Date(b.updationTime);
-      if (dateA < dateB) return -1;
-      if (dateA > dateB) return 1;
-      return 0;
-    });
-    const pin = updationDate.filter((p) => p.pin === 'pin');
-    const Unpin = updationDate.filter((p) => p.pin !== 'pin');
-    this.item = [...pin, ...Unpin];
-    this.modifiedDate = true;
-  }
 
-  ReverseUpdationTime() {
-    const creationDate = this.item.slice().sort((a, b) => {
-      const dateA = new Date(a.updationTime);
-      const dateB = new Date(b.updationTime);
-      if (dateA < dateB) return -1;
-      if (dateA > dateB) return 1;
-      return 0;
-    });
-    creationDate.reverse();
-    const pin = creationDate.filter((p) => p.pin === 'pin');
-    const Unpin = creationDate.filter((p) => p.pin !== 'pin');
-    this.item = [...pin, ...Unpin];
-    this.modifiedDate = true;
-  }
 
   convetDateToShortTerm(InsertionDate: any, updationDate: any): string {
     let dateObj = new Date(InsertionDate);

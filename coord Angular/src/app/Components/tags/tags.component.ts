@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { passValueService } from 'src/app/Services/passValue.service';
 import { Item } from 'src/app/Models/Item';
 import { LoginService } from 'src/app/Services/login.service';
-import { CurrentUser } from 'src/app/Models/CurrentUser';
+import { CurrentUsers } from 'src/app/Models/CurrentUser';
 import { ItemService } from 'src/app/Services/item.service';
 import { EditModalComponent } from '../edit-modal/edit-modal.component';
 import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
@@ -25,19 +25,19 @@ export class TagsComponent {
     private value: passValueService,
     private loginService: LoginService,
     private itemService: ItemService
-  ) {}
+  ) { }
 
   list: number = 0;
   item!: Item[];
   forFilteritem!: Item[];
-  user!: CurrentUser;
+  user!: CurrentUsers;
   star: string = 'fa-regular fa-star';
   starBoolen: boolean = false;
   tagList: string[] = [];
   buttons: string[] = [];
-  searchOptions:string[]=[]
-  searchText="";
-  modifiedDate: boolean=false;
+  searchOptions: string[] = []
+  searchText = "";
+  modifiedDate: boolean = false;
 
   ngOnInit() {
     const a = sessionStorage.getItem('email');
@@ -62,16 +62,16 @@ export class TagsComponent {
       this.item.filter((p: any) => {
         this.tagList = [...this.tagList, ...p.tags];
       });
-      this.tagList=this.tagList.slice().sort((a,b)=>a.localeCompare(b));
-      this.tagList=this.tagList.filter((value,index,self)=>self.indexOf(value)===index)
-      this.value.tagList=this.tagList
-      this.buttons=this.tagList
-      this.searchOptions=this.buttons
+      this.tagList = this.tagList.slice().sort((a, b) => a.localeCompare(b));
+      this.tagList = this.tagList.filter((value, index, self) => self.indexOf(value) === index)
+      this.value.tagList = this.tagList
+      this.buttons = this.tagList
+      this.searchOptions = this.buttons
     });
   }
 
-  search(value:any){
-    this.searchOptions=this.buttons.filter((opt)=>opt.toLowerCase().includes(value.toLowerCase()))
+  search(value: any) {
+    this.searchOptions = this.buttons.filter((opt) => opt.toLowerCase().includes(value.toLowerCase()))
   }
 
   openDialog() {
@@ -80,7 +80,7 @@ export class TagsComponent {
 
   likeStar(id: number, b: boolean, item1: Item) {
     item1.star = !b;
-    this.itemService.updateItem(id, item1).subscribe((res) => {});
+    this.itemService.updateItem(id, item1).subscribe((res) => { });
   }
 
   edit(eitem: Item) {
@@ -88,7 +88,7 @@ export class TagsComponent {
     this.dialogRef.open(EditModalComponent);
   }
   deleteItem(i: number) {
-    this.value.deleteItem = i; 
+    this.value.deleteItem = i;
     this.dialogRef.open(DeleteModalComponent);
   }
 
@@ -98,9 +98,9 @@ export class TagsComponent {
       a.classList.remove('act');
     }
     document.querySelector('.' + name)?.classList.add('act');
-    this.item=this.forFilteritem.filter(obj=>obj.tags.some(tag=>tag.toLowerCase()===name.toLowerCase()))
-    this.searchText=name
-    if(name==="alltags"){this.searchText=''}
+    this.item = this.forFilteritem.filter(obj => obj.tags.some(tag => tag.toLowerCase() === name.toLowerCase()))
+    this.searchText = name
+    if (name === "alltags") { this.searchText = '' }
   }
 
   arrangeInAlphabet() {
@@ -144,30 +144,6 @@ export class TagsComponent {
     this.modifiedDate = false;
   }
 
-  UpdationDate() {
-    const updationDate = this.item.slice().sort((a, b) => {
-      const dateA = new Date(a.updationTime);
-      const dateB = new Date(b.updationTime);
-      if (dateA < dateB) return -1;
-      if (dateA > dateB) return 1;
-      return 0;
-    });
-    this.item = updationDate
-    this.modifiedDate = true;
-  }
-
-  ReverseUpdationTime() {
-    const updationDate = this.item.slice().sort((a, b) => {
-      const dateA = new Date(a.updationTime);
-      const dateB = new Date(b.updationTime);
-      if (dateA < dateB) return -1;
-      if (dateA > dateB) return 1;
-      return 0;
-    });
-    updationDate.reverse();
-    this.item = updationDate;
-    this.modifiedDate = true;
-  }
 
   convetDateToShortTerm(InsertionDate: any, updationDate: any): string {
     let dateObj = new Date(InsertionDate);

@@ -1,7 +1,7 @@
 import { Collection } from "./Collection";
 import { Item } from "./Item";
 
-export interface CurrentUser{
+export interface CurrentUsers{
     id:number;
     email:string;
     password:string;

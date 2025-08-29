@@ -3,7 +3,7 @@ import { ItemService } from 'src/app/Services/item.service';
 import { passValueService } from 'src/app/Services/passValue.service';
 import { ModalComponent } from '../modal/modal.component';
 import { MatDialogRef } from '@angular/material/dialog';
-import { CurrentUser } from 'src/app/Models/CurrentUser';
+import { CurrentUsers } from 'src/app/Models/CurrentUser';
 import { LoginService } from 'src/app/Services/login.service';
 import { HomeComponent } from '../home/home.component';
 
@@ -14,7 +14,7 @@ import { HomeComponent } from '../home/home.component';
 })
 export class DeleteModalComponent {
 
-  user:CurrentUser | undefined;
+  user:CurrentUsers | undefined;
 
   constructor(
     public dialogRef: MatDialogRef<ModalComponent>,

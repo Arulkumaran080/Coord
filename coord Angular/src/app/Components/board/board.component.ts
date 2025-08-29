@@ -19,7 +19,7 @@ export class BoardComponent {
   mail!: string;
   item!: Item[];
   tagList!: string[];
-  modifiedDate: boolean=false;
+  modifiedDate: boolean = false;
 
   constructor(
     private dialogRef: MatDialog,
@@ -28,7 +28,7 @@ export class BoardComponent {
     private value: passValueService,
     private loginService: LoginService,
     private itemService: ItemService
-  ) {}
+  ) { }
   ngOnInit() {
     const a = sessionStorage.getItem('email');
     const b = sessionStorage.getItem('id');
@@ -62,7 +62,7 @@ export class BoardComponent {
   openDialog() {
     this.dialogRef.open(ModalComponent);
   }
-  openBoardModal(){
+  openBoardModal() {
     this.dialogRe.open(BoardModelComponent)
   }
   arrangeInAlphabet() {
@@ -114,34 +114,6 @@ export class BoardComponent {
     this.modifiedDate = false;
   }
 
-  UpdationDate() {
-    const updationDate = this.item.slice().sort((a, b) => {
-      const dateA = new Date(a.updationTime);
-      const dateB = new Date(b.updationTime);
-      if (dateA < dateB) return -1;
-      if (dateA > dateB) return 1;
-      return 0;
-    });
-    const pin = updationDate.filter((p) => p.pin === 'pin');
-    const Unpin = updationDate.filter((p) => p.pin !== 'pin');
-    this.item = [...pin, ...Unpin];
-    this.modifiedDate = true;
-  }
-
-  ReverseUpdationTime() {
-    const creationDate = this.item.slice().sort((a, b) => {
-      const dateA = new Date(a.updationTime);
-      const dateB = new Date(b.updationTime);
-      if (dateA < dateB) return -1;
-      if (dateA > dateB) return 1;
-      return 0;
-    });
-    creationDate.reverse();
-    const pin = creationDate.filter((p) => p.pin === 'pin');
-    const Unpin = creationDate.filter((p) => p.pin !== 'pin');
-    this.item = [...pin, ...Unpin];
-    this.modifiedDate = true;
-  }
 
   convetDateToShortTerm(InsertionDate: any, updationDate: any): string {
     let dateObj = new Date(InsertionDate);

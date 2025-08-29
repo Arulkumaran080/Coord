@@ -1,38 +1,35 @@
-import { createReducer, on } from '@ngrx/store';
-import * as ItemsActions from '../action/items.actions';
+import { ItemsActionTypes, ItemsActions } from '../action/items.actions';
 import { Item } from 'src/app/Models/Item';
+import { CurrentUsers } from 'src/app/Models/CurrentUser';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 // import * as ItemsActions from '../action/items.actions';
 
 export const itemsFeatureKey = 'items';
 
-export interface State {
-  items: Item[]; // Define the type of items as needed
+export interface ItemAndUserState {
+  items: Item[];
 }
 
-export const initialState: State = {
+export const initialState: ItemAndUserState = {
   items: [],
 };
 
-export const reducer = createReducer(
-  initialState,
-  on(ItemsActions.addItems, (state, { items }) => ({
-    ...state,
-    items: [...state.items, ...items], // Append new items to the existing list
-  }))
-);
-
-export function itemsReducer(
-  state: State | undefined = initialState,
-  action: ItemsActions.ItemsActionsTypes
-): State {
+export function itemsReducer(state: ItemAndUserState = initialState, action: ItemsActions): ItemAndUserState {
+  console.log('Action received:', action);
   switch (action.type) {
-    case ItemsActions.addItems.type:
+    case ItemsActionTypes.ADD_ITEMS:
       return {
         ...state,
-        items: [...state.items, ...action.payload.items],
+        items: [...action.payload.items],
       };
 
     default:
       return state;
   }
 }
+
+export const selectItems = createFeatureSelector<ItemAndUserState>(itemsFeatureKey);
+
+export const itemsSelector = createSelector(selectItems, state =>
+  state && state.items
+);

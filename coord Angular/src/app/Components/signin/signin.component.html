@@ -37,7 +37,7 @@
           <div class="dash"></div>
         </div>
         <div class="form">
-          <form (ngSubmit)="login()">
+          <form (ngSubmit)="userAuthentication()">
             <div class="inputs">
               <div class="mail form_ele">
                 <input
@@ -72,6 +72,9 @@
             <p *ngIf="wrong">
               Sorry, your email or password was incorrect. Please double-check
               your credentials.
+            </p>
+            <p *ngIf="errorMessage$ | async">
+              {{ errorMessage$ | async }}
             </p>
           </div>
           <div class="signin">

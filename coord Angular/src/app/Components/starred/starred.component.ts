@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CurrentUser } from 'src/app/Models/CurrentUser';
+import { CurrentUsers } from 'src/app/Models/CurrentUser';
 import { Item } from 'src/app/Models/Item';
 import { ItemService } from 'src/app/Services/item.service';
 import { LoginService } from 'src/app/Services/login.service';
@@ -22,16 +22,16 @@ export class StarredComponent {
     private value: passValueService,
     private loginService: LoginService,
     private itemService: ItemService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getByMail();
   }
 
   list: number = 0;
-  item: Item[]=[];
+  item: Item[] = [];
   i: any;
-  user!: CurrentUser;
+  user!: CurrentUsers;
   star: string = 'fa-regular fa-star';
   starBoolen: boolean = false;
   modifiedDate: boolean = false;
@@ -67,7 +67,7 @@ export class StarredComponent {
 
   likeStar(id: number, b: boolean, item1: Item) {
     item1.star = !b;
-    this.itemService.updateItem(id, item1).subscribe((res) => {});
+    this.itemService.updateItem(id, item1).subscribe((res) => { });
   }
 
   edit(eitem: Item) {
@@ -127,30 +127,6 @@ export class StarredComponent {
     this.modifiedDate = false;
   }
 
-  UpdationDate() {
-    const updationDate = this.item.slice().sort((a, b) => {
-      const dateA = new Date(a.updationTime);
-      const dateB = new Date(b.updationTime);
-      if (dateA < dateB) return -1;
-      if (dateA > dateB) return 1;
-      return 0;
-    });
-    this.item = updationDate
-    this.modifiedDate = true;
-  }
-
-  ReverseUpdationTime() {
-    const updationDate = this.item.slice().sort((a, b) => {
-      const dateA = new Date(a.updationTime);
-      const dateB = new Date(b.updationTime);
-      if (dateA < dateB) return -1;
-      if (dateA > dateB) return 1;
-      return 0;
-    });
-    updationDate.reverse();
-    this.item = updationDate;
-    this.modifiedDate = true;
-  }
 
   convetDateToShortTerm(InsertionDate: any, updationDate: any): string {
     let dateObj = new Date(InsertionDate);

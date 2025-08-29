@@ -36,6 +36,13 @@ import { NavBarComponent } from './new-component/nav-bar/nav-bar.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './new-component/store/reducers';
+import { CoordCardComponent } from './new-component/coord-card/coord-card.component';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './new-component/auth-store/auth.effects';
+import { ToastrModule } from 'ngx-toastr';
+import * as fromAuth from './new-component/auth-store/auth.reducer';
+import * as fromItemStore from './new-component/store/reducer/items.reducer';
+import { ItemEffects } from './new-component/store/item.effects';
 
 @NgModule({
   declarations: [
@@ -58,6 +65,7 @@ import { reducers, metaReducers } from './new-component/store/reducers';
     AddBoardModelComponent,
     HomePageComponent,
     NavBarComponent,
+    CoordCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,12 +82,19 @@ import { reducers, metaReducers } from './new-component/store/reducers';
     MatIconModule,
     SlickCarouselModule,
     MatAutocompleteModule,
-    StoreModule.forRoot({}, {}),
     StoreModule.forRoot(reducers, { metaReducers }),
-    StoreDevtoolsModule.instrument(),
+    StoreModule.forFeature(fromItemStore.itemsFeatureKey, fromItemStore.itemsReducer),
+    StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.authReducer),
+    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forFeature([ItemEffects]),
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true
+    }),
     StoreDevtoolsModule.instrument(),
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

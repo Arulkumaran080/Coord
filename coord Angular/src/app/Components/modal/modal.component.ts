@@ -3,7 +3,7 @@ import { Item } from 'src/app/Models/Item';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ItemService } from 'src/app/Services/item.service';
-import { CurrentUser } from 'src/app/Models/CurrentUser';
+import { CurrentUsers } from 'src/app/Models/CurrentUser';
 import { passValueService } from 'src/app/Services/passValue.service';
 import { LoginService } from 'src/app/Services/login.service';
 
@@ -27,16 +27,16 @@ export class ModalComponent {
     insertionTime: '',
     updationTime: '',
   };
-  tagList: string[]=[];
-  searchOptions: string[]=[];
+  tagList: string[] = [];
+  searchOptions: string[] = [];
 
   constructor(
     private router: Router,
     public dialogRef: MatDialogRef<ModalComponent>,
     private itemService: ItemService,
     private value: passValueService,
-    private loginService:LoginService
-  ) {}
+    private loginService: LoginService
+  ) { }
 
   ngOnInit() {
     const a = sessionStorage.getItem('email');
@@ -47,19 +47,19 @@ export class ModalComponent {
 
   getByMail(val: string) {
     this.loginService.getByMail(val).subscribe((res) => {
-      this.value.dummy=res.items;
+      this.value.dummy = res.items;
       this.value.dummy.filter((p: any) => {
         this.tagList = [...this.tagList, ...p.tags];
       });
-      this.tagList=this.tagList.slice().sort((a,b)=>a.localeCompare(b));
-      this.tagList=this.tagList.filter((value,index,self)=>self.indexOf(value)===index)
-      this.value.tagList=this.tagList
-      this.searchOptions=this.tagList
+      this.tagList = this.tagList.slice().sort((a, b) => a.localeCompare(b));
+      this.tagList = this.tagList.filter((value, index, self) => self.indexOf(value) === index)
+      this.value.tagList = this.tagList
+      this.searchOptions = this.tagList
     });
   }
 
-  search(value:any){
-    this.searchOptions=this.tagList.filter((opt)=>opt.toLowerCase().includes(value.toLowerCase()))
+  search(value: any) {
+    this.searchOptions = this.tagList.filter((opt) => opt.toLowerCase().includes(value.toLowerCase()))
   }
 
   addTag(e: KeyboardEvent) {
@@ -72,7 +72,7 @@ export class ModalComponent {
   save() {
     this.CapitalizeStringarray();
     console.log(this.item);
-    this.itemService.saveItem(this.item, this.value.user.id).subscribe(
+    this.itemService.saveItem(this.item, 1).subscribe(
       (res) => {
         console.log('added');
         this.discard();
@@ -91,17 +91,17 @@ export class ModalComponent {
   }
 
   CapitalizeStringarray() {
-    const formattedStrings:string[]=[]
+    const formattedStrings: string[] = []
 
-    this.item.tags.forEach((str)=>{
-      const string=str.split(' ');
-      const capitalArray=string.map((data)=>{
-        const capital=data.charAt(0).toUpperCase()+data.slice(1);
+    this.item.tags.forEach((str) => {
+      const string = str.split(' ');
+      const capitalArray = string.map((data) => {
+        const capital = data.charAt(0).toUpperCase() + data.slice(1);
         return capital;
       })
-      const formattedString=capitalArray.join('');
+      const formattedString = capitalArray.join('');
       formattedStrings.push(formattedString)
     })
-    this.item.tags=formattedStrings
+    this.item.tags = formattedStrings
   }
 }

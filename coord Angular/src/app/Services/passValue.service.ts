@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CurrentUser } from '../Models/CurrentUser';
+import { CurrentUsers } from '../Models/CurrentUser';
 import { Item } from '../Models/Item';
 import { star } from '../Models/star';
 import { Collection } from '../Models/Collection';
@@ -8,7 +8,7 @@ import { Collection } from '../Models/Collection';
   providedIn: 'root',
 })
 export class passValueService {
-  user: CurrentUser = {
+  user: CurrentUsers = {
     id: 0,
     email: '',
     password: '',

@@ -5,7 +5,7 @@ import { ItemService } from 'src/app/Services/item.service';
 import { LoginService } from 'src/app/Services/login.service';
 import { passValueService } from 'src/app/Services/passValue.service';
 import { ModalComponent } from '../modal/modal.component';
-import { CurrentUser } from 'src/app/Models/CurrentUser';
+import { CurrentUsers } from 'src/app/Models/CurrentUser';
 import { Item } from 'src/app/Models/Item';
 import { EditModalComponent } from '../edit-modal/edit-modal.component';
 import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
@@ -19,7 +19,7 @@ export class PinComponent {
   list: number = 0;
   item!: Item[];
   i: any;
-  user!: CurrentUser;
+  user!: CurrentUsers;
   star: string = 'fa-regular fa-star';
   starBoolen: boolean = false;
   modifiedDate: boolean = false;
@@ -30,7 +30,7 @@ export class PinComponent {
     private value: passValueService,
     private loginService: LoginService,
     private itemService: ItemService
-  ) {}
+  ) { }
 
   ngOnInit() {
     const a = sessionStorage.getItem('email');
@@ -63,7 +63,7 @@ export class PinComponent {
   }
   likeStar(id: number, b: boolean, item1: Item) {
     item1.star = !b;
-    this.itemService.updateItem(id, item1).subscribe((res) => {});
+    this.itemService.updateItem(id, item1).subscribe((res) => { });
   }
   edit(eitem: Item) {
     this.value.editItem = eitem;
@@ -115,30 +115,6 @@ export class PinComponent {
     this.modifiedDate = false;
   }
 
-  UpdationDate() {
-    const updationDate = this.item.slice().sort((a, b) => {
-      const dateA = new Date(a.updationTime);
-      const dateB = new Date(b.updationTime);
-      if (dateA < dateB) return -1;
-      if (dateA > dateB) return 1;
-      return 0;
-    });
-    this.item = updationDate
-    this.modifiedDate = true;
-  }
-
-  ReverseUpdationTime() {
-    const updationDate = this.item.slice().sort((a, b) => {
-      const dateA = new Date(a.updationTime);
-      const dateB = new Date(b.updationTime);
-      if (dateA < dateB) return -1;
-      if (dateA > dateB) return 1;
-      return 0;
-    });
-    updationDate.reverse();
-    this.item = updationDate;
-    this.modifiedDate = true;
-  }
 
   convetDateToShortTerm(InsertionDate: any, updationDate: any): string {
     let dateObj = new Date(InsertionDate);
